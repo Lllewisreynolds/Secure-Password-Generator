@@ -7,7 +7,11 @@ var specialCharacter = ["@", "!",  "#", "$", "%", "&", "*", "(", ")", "^", "+", 
 
 // Blank array created. This will be used to append the user's choices from each Character Set defined above.
 
-var SelectedPasswordArray = [];
+var selectedPasswordArray = [];
+
+// Will need a variable created to initialise the process of a user selecting their password length. Will be set to a boolean of 'false' initially so that we can trigger a prompt function to pop-up asking what password length they want
+
+var selectedPasswordLength = false;
 
 
 // Assignment Code
