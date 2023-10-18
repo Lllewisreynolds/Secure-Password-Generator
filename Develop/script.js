@@ -5,14 +5,12 @@
     console.log("Password Length is: ", passwordLength);
     var selectedPasswordArray = promptAndCheckChar()
     console.log("My selected password array is: ", selectedPasswordArray)
-    var userPassword = createFinalPassword()
+    var userPassword = createFinalPassword(passwordLength, selectedPasswordArray)
     console.log("My randomised final password is: ", userPassword)
-    
+  return userPassword;
+  console.log("generating password done.")
   }
-    console.log("generating password done.")
-  // return userPassword
-  // }
-  //console.log(generatePassword());
+  console.log(generatePassword());
  
   function promptAndCheckLength() {
     console.log("About to get length")
@@ -72,7 +70,7 @@ function promptAndCheckChar() {
   return userSelection;
 }  
 
-function createFinalPassword () {
+function createFinalPassword (passwordLength, selectedPasswordArray) {
   var password = "";
   for (var i = 0; i < passwordLength.length; i++) {
   password = selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
@@ -101,8 +99,6 @@ function createFinalPassword () {
   
   // WHEN the password is generated
   // THEN the password is either displayed in an alert or written to the page
-  
-
 
 var generateBtn = document.querySelector("#generate");
 
