@@ -1,27 +1,17 @@
 
-// Do these need to be global, or can all of the code I create go within the generatePassword() function?
-// Confused on global and local scope with the userSelection variable and the functions enclosed within the code block for generatePassword() also? Will the later run 
-
-
-
-
-
-
   function generatePassword() {
     console.log("generating my password running")
     var passwordLength = promptAndCheckLength()
     console.log("Password Length is: ", passwordLength);
     var selectedPasswordArray = promptAndCheckChar()
     console.log("My selected password array is: ", selectedPasswordArray)
-  var userPassword = ""
-  for (let i = 0; i < passwordLength; i++) {
-    var newLetter; // = //get random element from selectedPasswordArray
-    //add newLetter to userPassword
+    var userPassword = createFinalPassword()
+    console.log("My randomised final password is: ", userPassword)
     
   }
     console.log("generating password done.")
-  return userPassword
-  }
+  // return userPassword
+  // }
   //console.log(generatePassword());
  
   function promptAndCheckLength() {
@@ -35,20 +25,15 @@
       window.location.reload(true)
     }
     // Reset created if initial user response is not a number
-    // Why does Not a Number work but Number.isNan not work if it is more specific?
+    
     if (isNaN(userSelection)) {
       window.alert("Password length must be in numerical format");
       userSelection = 0;
       window.location.reload(true)
     }
     console.log("Done prompting for length")
-    return userSelection
+    return userSelection;
   }
-
-    // THEN I am presented with a series of prompts for password criteria
-  // Use .confirm() to confirm the user has used the set criteria for password characters
-  // Use .confirm() method to confirm password is acceptable to user "Do you want this?" - provides a boolean
-
 
 function promptAndCheckChar() {
   // An array has been created and populated for each Character Set the user will choose their password from.
@@ -58,32 +43,61 @@ function promptAndCheckChar() {
   var specialCharacter = ["@", "!",  "#", "$", "%", "&", "*", "(", ")", "^", "+", "?", "/", "-", ":", ";", "[", "]", "{", "}", "<", ">", "=", "_", "`", "|", "~", ".",];
   // Blank array created. This will be used to append the user's choices from each Character Set defined above.
   var userSelection = [];
+
+  // Native Javascript.confirm function used to pass through each of the user's character type choices for their password.
   var lowerCaseConfirm = window.confirm('Would you like to include lowercase characters?');
   if (lowerCaseConfirm === true) {
       userSelection.push(lowerCaseCharacter);
   }
+  var upperCaseConfirm = window.confirm('Would you like to include uppercase characters?');
+  if (upperCaseConfirm === true) {
+      userSelection.push(upperCaseCharacter);
+  }
+  var numberConfirm = window.confirm('Would you like to include number characters?');
+  if (numberConfirm === true) {
+      userSelection.push(numberCharacter);
+  }
+  var specialConfirm = window.confirm('Would you like to include special characters?');
+  if (specialConfirm === true) {
+      userSelection.push(specialCharacter);
+  }
+
+// Refresh/reset created if initial user response does not include any of the 4 character types.
+
   if(userSelection.length === 0 ){
-    console.log("INVALID")
-    //troubleshoot here
+    console.log("INVALID");
+    window.alert("You are required to select at least one character type.");
+    window.location.reload(true);
   }
   return userSelection;
 }  
-  // WHEN asked for character types to include in the password
-  // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  // Use .confirm() function
 
+function createFinalPassword () {
+  var password = "";
+  for (var i = 0; i < passwordLength.length; i++) {
+  password = selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
+  }
+  return password;
+  }
 
-
-    
     // ## Acceptance Criteria
    
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
   // WHEN all prompts are answered
   // THEN a password is generated that matches the selected criteria
+
+  // example for loop - will be used as template for final password generation + then randomisation
+// for (let i = 0; i < 10; i++) {
+//   console.log(i)
+// }
+
+ // for (let i = 0; i < passwordLength; i++) {
+  //   var newLetter; // = //get random element from selectedPasswordArray
+  //   //add newLetter to userPassword
   
-  // Create a variable array that holds all the user's choices.
-  // Use math.floor & math.random to randomise this selection?
+  // Final step - generate password:
+  // create array that holds users preferences 
+  // look into Maths.Random to randomize selection
+  // loop to select a random character from the array. 'length of password' iterations
   
   // WHEN the password is generated
   // THEN the password is either displayed in an alert or written to the page
@@ -92,19 +106,11 @@ function promptAndCheckChar() {
 
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  // What has been called but hasn't been defined/declared - generatePassword is a function that is being called but hasn't been defined
-// Our assignment is to create this function.
 }
 
 generateBtn.addEventListener("click", writePassword);
-
-// example for loop - will be used as template for final password generation + then randomisation
-// for (let i = 0; i < 10; i++) {
-//   console.log(i)
-// }
