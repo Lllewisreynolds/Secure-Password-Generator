@@ -7,8 +7,8 @@
     console.log("My selected password array is: ", selectedPasswordArray)
     var userPassword = createFinalPassword(passwordLength, selectedPasswordArray)
     console.log("My randomised final password is: ", userPassword)
+    console.log("generating password done.")
     return userPassword;
-  console.log("generating password done.")
   }
   console.log(generatePassword());
  
@@ -45,19 +45,27 @@ function promptAndCheckChar() {
   // Native Javascript.confirm function used to pass through each of the user's character type choices for their password.
   var lowerCaseConfirm = window.confirm('Would you like to include lowercase characters?');
   if (lowerCaseConfirm === true) {
-      userSelection.push(lowerCaseCharacter);
+    for(char of lowerCaseCharacter){
+      userSelection.push(char)
+    }
   }
   var upperCaseConfirm = window.confirm('Would you like to include uppercase characters?');
   if (upperCaseConfirm === true) {
-      userSelection.push(upperCaseCharacter);
+    for(char of upperCaseCharacter){
+      userSelection.push(char)
+    }
   }
   var numberConfirm = window.confirm('Would you like to include number characters?');
   if (numberConfirm === true) {
-      userSelection.push(numberCharacter);
+    for(char of numberCharacter){
+      userSelection.push(char)
+    }
   }
   var specialConfirm = window.confirm('Would you like to include special characters?');
   if (specialConfirm === true) {
-      userSelection.push(specialCharacter);
+    for(char of specialCharacter){
+      userSelection.push(char)
+    }
   }
 
 // Refresh/reset created if initial user response does not include any of the 4 character types.
@@ -73,8 +81,7 @@ function promptAndCheckChar() {
 function createFinalPassword (passwordLength, selectedPasswordArray) {
   var finalPasswordString = "";
   for (var i = 0; i < passwordLength; i++) {
-    // no need here for passwordLength.length?
-  finalPasswordString = selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
+  finalPasswordString += selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
   }
   console.log(finalPasswordString);
   return finalPasswordString;
@@ -84,12 +91,7 @@ function createFinalPassword (passwordLength, selectedPasswordArray) {
    
   // WHEN all prompts are answered
   // THEN a password is generated that matches the selected criteria
-
-  // example for loop - will be used as template for final password generation + then randomisation
-// for (let i = 0; i < 10; i++) {
-//   console.log(i)
-// }
-
+  
  // for (let i = 0; i < passwordLength; i++) {
   //   var newLetter; // = //get random element from selectedPasswordArray
   //   //add newLetter to userPassword
