@@ -14,7 +14,7 @@ At this early stage in my coding journey, I have attempted to highlight my burge
 
 4. Numerous sub-functions created and nested within the overall generatePassword() function as the process of generating the final, randomised password string is chunked down into better understood step processes to provide a cleaner code reading and logic parsing experience.
 
-5. A for loop has been used in conjunction with the Math.floor() and Math.random() methods to randomise the user's input in order to display the final password.
+5. A for loop has been used in conjunction with the Math.floor() and Math.random() methods to randomise the user's input in order to produce the final password string. generatePassword() is then called by the writePassword() function when the eventListener is triggered by the user clicking on the button.
 
 ## Screenshot of Finalised Application - Usage
 
@@ -24,7 +24,7 @@ Clicking the 'Generate Password' button will produce a series of prompts, reques
 
 Upon completion of each individualised character confirmation prompt, your new password will display in the text area where "Your Secure Password" placeholder is currently visible.
 
-![img]()
+![img](./Images/Password%20Creator%20-%20Randomised%20Password%20Displayed.png)
 
 ## Link to Deployed Application
 

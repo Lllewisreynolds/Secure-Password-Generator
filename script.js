@@ -1,17 +1,16 @@
 
   function generatePassword() {
-    console.log("generating my password running")
+    console.log("generating my password running");
     var passwordLength = promptAndCheckLength()
     console.log("Password Length is: ", passwordLength);
     var selectedPasswordArray = promptAndCheckChar()
-    console.log("My selected password array is: ", selectedPasswordArray)
+    console.log("My selected password array is: ", selectedPasswordArray);
     var userPassword = createFinalPassword(passwordLength, selectedPasswordArray)
-    console.log("My randomised final password is: ", userPassword)
-    console.log("generating password done.")
+    console.log("My randomised final password is: ", userPassword);
+    console.log("generating password done.");
     return userPassword;
   }
-  console.log(generatePassword());
- 
+
   function promptAndCheckLength() {
     console.log("About to get length")
     // Prompt created to elicit initial user response
@@ -23,7 +22,6 @@
       window.location.reload(true)
     }
     // Reset created if initial user response is not a number
-    
     if (isNaN(userSelection)) {
       window.alert("Password length must be in numerical format");
       userSelection = 0;
@@ -69,7 +67,6 @@ function promptAndCheckChar() {
   }
 
 // Refresh/reset created if initial user response does not include any of the 4 character types.
-
   if(userSelection.length === 0 ){
     console.log("INVALID");
     window.alert("You are required to select at least one character type.");
@@ -78,6 +75,8 @@ function promptAndCheckChar() {
   return userSelection;
 }  
 
+// For loop iterates through the user's defined password length, adding a new character from the previously generated selected character type array with each go around to create our final password string.
+// These selected character types are randomised and rounded down through the use of the Math.floor and Math.random functions.
 function createFinalPassword (passwordLength, selectedPasswordArray) {
   var finalPasswordString = "";
   for (var i = 0; i < passwordLength; i++) {
@@ -86,26 +85,6 @@ function createFinalPassword (passwordLength, selectedPasswordArray) {
   console.log(finalPasswordString);
   return finalPasswordString;
   }
-
-    // ## Acceptance Criteria
-   
-  // WHEN all prompts are answered
-  // THEN a password is generated that matches the selected criteria
-  
- // for (let i = 0; i < passwordLength; i++) {
-  //   var newLetter; // = //get random element from selectedPasswordArray
-  //   //add newLetter to userPassword
-  
-  // Final step - generate password:
-  // use array that holds users preferences
-  // look into Maths.Random to randomize selection - will generate a random decimal number between '0 and 1' - what does that mean? 0 and 1 in the sense of binary/boolean?  
-  // Then need to generate a number according to the user's desires password length - done by timesing it? * passwordLength variant?
-  // Floor will round it down - but doesn't SelectedPasswordArray contain data types other than number?
-
-  // loop to select a random character from the array. 'length of password' iterations
-  
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
 
 var generateBtn = document.querySelector("#generate");
 
