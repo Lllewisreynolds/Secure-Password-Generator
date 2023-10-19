@@ -7,7 +7,7 @@
     console.log("My selected password array is: ", selectedPasswordArray)
     var userPassword = createFinalPassword(passwordLength, selectedPasswordArray)
     console.log("My randomised final password is: ", userPassword)
-  return userPassword;
+    return userPassword;
   console.log("generating password done.")
   }
   console.log(generatePassword());
@@ -71,11 +71,13 @@ function promptAndCheckChar() {
 }  
 
 function createFinalPassword (passwordLength, selectedPasswordArray) {
-  var password = "";
-  for (var i = 0; i < passwordLength.length; i++) {
-  password = selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
+  var finalPasswordString = "";
+  for (var i = 0; i < passwordLength; i++) {
+    // no need here for passwordLength.length?
+  finalPasswordString = selectedPasswordArray[Math.floor(Math.random() * (selectedPasswordArray.length))];
   }
-  return password;
+  console.log(finalPasswordString);
+  return finalPasswordString;
   }
 
     // ## Acceptance Criteria
@@ -93,8 +95,11 @@ function createFinalPassword (passwordLength, selectedPasswordArray) {
   //   //add newLetter to userPassword
   
   // Final step - generate password:
-  // create array that holds users preferences 
-  // look into Maths.Random to randomize selection
+  // use array that holds users preferences
+  // look into Maths.Random to randomize selection - will generate a random decimal number between '0 and 1' - what does that mean? 0 and 1 in the sense of binary/boolean?  
+  // Then need to generate a number according to the user's desires password length - done by timesing it? * passwordLength variant?
+  // Floor will round it down - but doesn't SelectedPasswordArray contain data types other than number?
+
   // loop to select a random character from the array. 'length of password' iterations
   
   // WHEN the password is generated
